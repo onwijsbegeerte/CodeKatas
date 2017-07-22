@@ -17,15 +17,12 @@ namespace Bubblesort.tests
             Assert.Equal(3, actual.Length);
         }
 
-        [Fact]
-        public void One_Step_Should_Return_Modified_arr()
+        [Theory]
+        [InlineData(new int[] { 7, 5}, new int[] { 5, 7 })]
+        public void One_Step_Should_Return_Modified_arr(int[] input, int[] expected) 
         {
             var kata = new Kata();
             // Example test case from description
-            var input = new int[] { 7, 5};
-       
-            var expected = new int[] { 5, 7 };
-
             Assert.Equal(expected, kata.BubbleSortOnce(input));
         }
 
