@@ -4,10 +4,19 @@ namespace Bubblesort
 {
     public class Kata
     {
-        public static int[] BubbleSortOnce(int[] input)
+        public int[] BubbleSortOnce(int[] input)
         {
-            // Code the Bubblesort Algorithm here :D
-            
+            for (int i = 0; i < input.Length - 1; i++)
+            {
+                var left = input[i];
+
+                if (input[i] > input[i + 1])
+                {
+                    input[i] = input[i + 1];
+                    input[i+1] = left;
+                }
+            }
+
             return input;
         }
     }
