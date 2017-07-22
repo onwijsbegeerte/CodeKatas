@@ -22,7 +22,9 @@ namespace Bubblesort.tests
         }
 
         [Theory]
-        [InlineData(new int[] { 7, 5}, new int[] { 5, 7 })]
+        [InlineData(new int[] { 7, 5 }, new int[] { 5, 7 })]
+        [InlineData(new int[] { 7, 5 }, new int[] { 5, 7 })]
+        [InlineData(new int[] { 7, 7 }, new int[] { 7, 7 })]
         public void One_Step_Should_Return_Modified_arr(int[] input, int[] expected) 
         {
             // Example test case from description
