@@ -23,5 +23,23 @@ namespace Mixing.Tests
 
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData("ccccaaaddd", "aaaccccddd")]
+        public void Should_Format_String(string input, string expected)
+        {
+            var actual = _mixer.FormatInput(input);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData("aabb", "aaabbc", "2:aaa/=:bb")]
+        public void Should_Format_String2(string s1, string s2, string expected)
+        {
+            var actual = _mixer.FormatCombine(s1, s2);
+
+            Assert.Equal(expected, actual);
+        }
     }
 }
