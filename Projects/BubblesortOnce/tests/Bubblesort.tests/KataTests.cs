@@ -6,13 +6,17 @@ namespace Bubblesort.tests
 {
     public class KataTests
     {
+        private readonly Kata _kata;
+
+        public KataTests(){
+            this._kata = new Kata();
+        }
+
         [Fact]
         public void Dependencies_Should_Be_Hooked_Up()
         {
-            // Arrange
-            var kata = new Kata();
             // Act
-            var actual = kata.BubbleSortOnce(new int[] { 3, 4, 5 });
+            var actual = _kata.BubbleSortOnce(new int[] { 3, 4, 5 });
             // Assert
             Assert.Equal(3, actual.Length);
         }
@@ -21,9 +25,8 @@ namespace Bubblesort.tests
         [InlineData(new int[] { 7, 5}, new int[] { 5, 7 })]
         public void One_Step_Should_Return_Modified_arr(int[] input, int[] expected) 
         {
-            var kata = new Kata();
             // Example test case from description
-            Assert.Equal(expected, kata.BubbleSortOnce(input));
+            Assert.Equal(expected, _kata.BubbleSortOnce(input));
         }
 
         // [Fact]
