@@ -31,36 +31,39 @@ namespace Mixing
 
             foreach (var character in x)
             {
-                var results1 = CharCounter(s1, character);
-                var resultts2 = CharCounter(s2, character);
-
-                var total = results1 > resultts2 ? results1 : resultts2;
-
-                if (total >= 2)
+                if (char.IsLetter(character))
                 {
-                    if (results1 > resultts2)
-                    {
-                        result += "1:";
 
-                    }
-                    else if (results1 < resultts2)
-                    {
-                        result += "2:";
+                    var results1 = CharCounter(s1, character);
+                    var resultts2 = CharCounter(s2, character);
 
-                    }
-                    else
-                    {
-                        result += "=:";
-                    }
+                    var total = results1 > resultts2 ? results1 : resultts2;
 
-                    for (int i = 0; i < total; i++)
+                    if (total >= 2)
                     {
-                        result += character;
+                        if (results1 > resultts2)
+                        {
+                            result += "1:";
+
+                        }
+                        else if (results1 < resultts2)
+                        {
+                            result += "2:";
+                        }
+                        else
+                        {
+                            result += "=:";
+                        }
+
+                        for (int i = 0; i < total; i++)
+                        {
+                            result += character;
+                        }
+                        result += "/";
                     }
-                    result += "/";
                 }
             }
-            return result.Substring(0,result.Length -1);
+            return result.Substring(0, result.Length - 1);
         }
     }
 }

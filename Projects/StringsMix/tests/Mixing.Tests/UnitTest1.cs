@@ -35,6 +35,8 @@ namespace Mixing.Tests
 
         [Theory]
         [InlineData("aabb", "aaabbc", "2:aaa/=:bb")]
+        [InlineData("aabb!@#!@#", "aaabbc@#$@#$333", "2:aaa/=:bb")]
+        [InlineData("@#$//aabb!@#!@#////", "aaabbc@#$@#$333", "2:aaa/=:bb")]
         public void Should_Format_String2(string s1, string s2, string expected)
         {
             var actual = _mixer.FormatCombine(s1, s2);
