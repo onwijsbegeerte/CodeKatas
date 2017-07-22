@@ -11,12 +11,10 @@ namespace Bubblesort.tests
         {
             // Arrange
                 var kata = new Kata();
-
-
             // Act
-                
-            
+                var result = kata.BubbleSortOnce(new int[] { 3, 4, 5 });
             // Assert
+                Assert.Equal(3, result.Length);
         }
     }
 }
