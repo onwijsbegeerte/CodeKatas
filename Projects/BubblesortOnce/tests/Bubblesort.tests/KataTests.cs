@@ -15,9 +15,7 @@ namespace Bubblesort.tests
         [Fact]
         public void Dependencies_Should_Be_Hooked_Up()
         {
-            // Act
             var actual = _kata.BubbleSortOnce(new int[] { 3, 4, 5 });
-            // Assert
             Assert.Equal(3, actual.Length);
         }
 
@@ -27,18 +25,16 @@ namespace Bubblesort.tests
         [InlineData(new int[] { 7, 7 }, new int[] { 7, 7 })]
         public void One_Step_Should_Return_Modified_arr(int[] input, int[] expected) 
         {
-            // Example test case from description
             Assert.Equal(expected, _kata.BubbleSortOnce(input));
         }
 
-        // [Fact]
-        // public void ExampleTest()
-        // {
-        //     var kata = new Kata();
-        //     // Example test case from description
-        //     var expected = new int[] { 7, 5, 3, 1, 2, 4, 6, 8, 9 };
-        //     var actual = new int[] { 9, 7, 5, 3, 1, 2, 4, 6, 8 };
-        //     Assert.Equal(expected, kata.BubbleSortOnce(actual));
-        // }
+        [Theory]
+        [InlineData(new int[] { 7, 5, 1 }, new int[] { 5, 1, 7 })]
+        [InlineData(new int[] { 7, 5, 1, 8 }, new int[] { 5, 1, 7, 8 })]
+        [InlineData(new int[] { 9, 7, 5, 3, 1, 2, 4, 6, 8 }, new int[] { 7, 5, 3, 1, 2, 4, 6, 8, 9 })]
+        public void Multiple_Steps_Should_Return_Modified_arr(int[] input, int[] expected) 
+        {
+            Assert.Equal(expected, _kata.BubbleSortOnce(input));
+        }
     }
 }
