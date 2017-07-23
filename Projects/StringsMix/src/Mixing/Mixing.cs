@@ -1,16 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Mixing
 {
     public class Mixer
     {
-        public string Mix(string s1, string s2)
-        {
-
-            return "asd";
-        }
-
         public int CharCounter(string input, char character)
         {
             var result = input.Where(c => c == character);
@@ -18,21 +13,24 @@ namespace Mixing
             return result.Count();
         }
 
-        public string FormatInput(string input)
+        public List<string> FormatResult(List<string> input)
         {
-            return new string(input.OrderBy(c => c).ToArray());
+            var result = input.OrderByDescending(r => r.Length).ThenBy(r => r[0] == '=').ThenBy(r => r).ToList();
+
+            return result;
         }
 
-        public string FormatCombine(string s1, string s2)
+        public string Mix(string s1, string s2)
         {
-            var x = (s1 + s2).Distinct();
+            var UniqueCharacters = (s1 + s2).Distinct();
 
-            var result = "";
+            var combinedResult = new List<string>();
 
-            foreach (var character in x)
+            foreach (var character in UniqueCharacters)
             {
-                if (char.IsLetter(character))
+                if (char.IsLetter(character) && character == char.ToLower(character) )
                 {
+                    var chunk = string.Empty;
 
                     var results1 = CharCounter(s1, character);
                     var resultts2 = CharCounter(s2, character);
@@ -43,27 +41,47 @@ namespace Mixing
                     {
                         if (results1 > resultts2)
                         {
-                            result += "1:";
+                            chunk += "1:";
 
                         }
                         else if (results1 < resultts2)
                         {
-                            result += "2:";
+                            chunk += "2:";
                         }
                         else
                         {
-                            result += "=:";
+                            chunk += "=:";
                         }
 
                         for (int i = 0; i < total; i++)
                         {
-                            result += character;
+                            chunk += character;
                         }
-                        result += "/";
+
+                        chunk += "/";
+
+                        combinedResult.Add(chunk);
+
                     }
                 }
             }
-            return result.Substring(0, result.Length - 1);
+
+            combinedResult = FormatResult(combinedResult);
+            var result = "";
+
+            foreach (var chunk in combinedResult)
+            {
+                result += chunk;
+            }
+
+            if (result.Length >= 1)
+            {
+                return result.Substring(0, result.Length - 1);
+            }
+            else
+            {
+                return "";
+            }
         }
     }
 }
