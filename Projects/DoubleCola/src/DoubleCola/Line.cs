@@ -6,7 +6,7 @@ namespace DoubleCola
     {
         public string WhoIsNext(string[] names , long n)
         { 
-              // Your code is here :)
+              return names[0];
         }
     }
 }
