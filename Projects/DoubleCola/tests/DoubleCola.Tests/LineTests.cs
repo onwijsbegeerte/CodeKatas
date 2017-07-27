@@ -33,5 +33,16 @@ namespace DoubleCola.Tests
 
             Assert.Equal(expected, actually);
         }
+
+        [Theory]
+        [InlineData(5, "Sheldon")]
+        [InlineData(6, "Sheldon")]
+        [InlineData(7, "Leonard")]
+        public void WhoIsNext_Should_Return_Name_For_N(long n, string expected)
+        {
+            var actually = _line.WhoIsNext(names, n);
+
+            Assert.Equal(expected, actually);
+        }
     }
 }
