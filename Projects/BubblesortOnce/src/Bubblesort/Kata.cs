@@ -16,7 +16,6 @@ namespace Bubblesort
                     input[i+1] = left;
                 }
             }
-
             return input;
         }
     }
