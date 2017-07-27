@@ -9,7 +9,7 @@ namespace DoubleCola
         {
             Queue<string> queue = new Queue<string>(names);
 
-            for (int i = 0; i < n; i++)
+            for (long i = 1; i < n; i++)
             {
                 var first = queue.Dequeue();
                 queue.Enqueue(first);

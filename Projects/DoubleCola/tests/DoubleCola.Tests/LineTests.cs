@@ -23,10 +23,11 @@ namespace DoubleCola.Tests
         }
 
         [Theory]
-        [InlineData(1, "Leonard")]
-        [InlineData(2, "Penny")]
-        [InlineData(3, "Rajesh")]
-        [InlineData(4, "Howard")]
+        [InlineData(1, "Sheldon")]
+        [InlineData(2, "Leonard")]
+        [InlineData(3, "Penny")]
+        [InlineData(4, "Rajesh")]
+        [InlineData(5, "Howard")]
         public void WhoIsNext_Should_Return_Name_After_First_Rotation(long n, string expected)
         {
             var actually = _line.WhoIsNext(names, n);
@@ -35,9 +36,11 @@ namespace DoubleCola.Tests
         }
 
         [Theory]
-        [InlineData(5, "Sheldon")]
         [InlineData(6, "Sheldon")]
-        [InlineData(7, "Leonard")]
+        [InlineData(7, "Sheldon")]
+        [InlineData(8, "Leonard")]
+        [InlineData(52, "Penny")]
+        [InlineData(7230702951, "Leonard")]
         public void WhoIsNext_Should_Return_Name_For_N(long n, string expected)
         {
             var actually = _line.WhoIsNext(names, n);
